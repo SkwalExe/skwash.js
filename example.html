@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skwash.js</title>
+</head>
+
+<body>
+
+    <div class="terminalContent">
+
+    </div>
+    <textarea autofocus id="cmdinput"></textarea>
+
+
+    <style>
+        html {
+            background-color: black;
+            padding: 10px;
+        }
+        
+        * {
+            outline: none;
+            resize: none;
+            color: white;
+            background-color: transparent;
+            border: none;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="dist/skwash.min.js"></script>
+    <script>
+        let prompt = "/ $ "
+        let terminalContent = document.querySelector('.terminalContent');
+        let cmdinput = document.querySelector('#cmdinput');
+        let shell = new ShellEmulator();
+
+        document.addEventListener("keydown", () => {
+            cmdinput.focus()
+        })
+        shell.on('stdout', (res) => {
+            let element = document.createElement('pre');
+            element.innerText = res;
+            terminalContent.appendChild(element);
+            terminalContent.scrollTop = terminalContent.scrollHeight;
+        });
+
+        shell.on('stderr', (res) => {
+            let element = document.createElement('pre');
+            element.innerText = "error : " + res;
+            terminalContent.appendChild(element);
+            terminalContent.scrollTop = terminalContent.scrollHeight;
+        });
+
+        cmdinput.addEventListener('keydown', (e) => {
+            // if key is enter
+            if (e.keyCode === 13) {
+                e.preventDefault()
+                let cmd = cmdinput.value.substring(prompt.length);
+                if (cmd.trim() === "clear")
+                    terminalContent.innerHTML = '';
+                else {
+                    terminalContent.innerHTML += `<pre>${prompt + cmd}</pre>`;
+                    shell.run(cmd);
+                }
+                prompt = shell.fs.CWD() + ' $ '
+                cmdinput.value = prompt;
+            }
+            // if key is backspace
+            if (e.keyCode === 8) {
+                if (cmdinput.value.length === prompt.length) {
+                    e.preventDefault()
+                    return;
+                }
+            }
+            // if key is left arrow 
+            if (e.keyCode === 37) {
+                if (cmdinput.selectionStart === prompt.length) {
+                    e.preventDefault()
+                    return;
+                }
+            }
+
+            // if key is up arrow   
+            if (e.keyCode === 38) {
+                e.preventDefault()
+                return;
+            }
+
+        });
+
+        cmdinput.value = prompt;
+    </script>
+
+</body>
+
+</html>
