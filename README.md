@@ -1,19 +1,3 @@
-# ProgramName
-
-![](images/1.png)
-
-Description
-
-# Installation 📦
-
-Installation instructions
-
-# Usage 📝
-
-How to use the program
-
-![](images/usage.png)
-=======
 # skwash.js
 
 🐧 Linux-like shell 🐚 emulated directly in javascript 😍
