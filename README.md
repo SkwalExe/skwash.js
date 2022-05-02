@@ -41,11 +41,11 @@ Skwash.js provides the following features:
 
 Once you created a shell instance, you can use these functions to interact with it:
 
-- [✨ `ShellEmulator.run()`](#run)
-- [✨ `ShellEmulator.registerCommand()`](#registerCommand)
-- [✨ `ShellEmulator.removeCommand()`](#removeCommand)
-- [✨ `ShellEmulator.on()`](#on)
-- [✨ `ShellEmulator.fs.*`](#fs)
+- [✨ `ShellEmulator.run()`](#shellemulatorrun)
+- [✨ `ShellEmulator.registerCommand()`](#shellemulatorregistercommand)
+- [✨ `ShellEmulator.removeCommand()`](#shellemulatorremovecommand)
+- [✨ `ShellEmulator.on()`](#shellemulatoron)
+- [✨ `ShellEmulator.fs.*`](#shellemulatorfs)
 
 By default, the shell is provided with the following build-in commands:
 
