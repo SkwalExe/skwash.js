@@ -1,4 +1,4 @@
-const cd = (env, args) => {
+const cd = (env) => {
 
   const help = new env.Help('skwalsh.js', 'linux shell emulator for javascript')
     .arg('help', 'Display this help')

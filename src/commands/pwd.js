@@ -1,4 +1,4 @@
-const cd = (env, args) => {
+const cd = (env) => {
   env.print(env.fs.currentDirectory)
 }
 

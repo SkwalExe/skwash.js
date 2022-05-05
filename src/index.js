@@ -1,8 +1,8 @@
-// skwash.js
-// https://github.com/SkwalExe/skwash.js
-// license : MIT
-/// //////////////////////////////////////
-
+/*
+ * Skwash.js
+ * https://github.com/SkwalExe/skwash.js
+ * License : MIT
+ */
 const FFS = require('fakefilesystem')
 
 class ShellEmulator {
@@ -111,7 +111,7 @@ class ShellEmulator {
 
     this.run = (command) => {
       command = command.trim()
-        // add command to the history if needed
+        // Add command to the history if needed
       if (command.length > 0 && this.history[0] !== command && command !== 'history') {
         this.history.unshift(command)
       }

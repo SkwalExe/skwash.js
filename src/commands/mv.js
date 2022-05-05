@@ -31,8 +31,8 @@ const mv = (env, args) => {
     case 'help':
 
       env.print(new env.Help('mv', 'Move a file from one location to another', false)
-        .arg(['--force', '-f'], 'Overwrite existing files')
-        .arg(['--help', '-h'], 'Display this help')
+        .arg([ '--force', '-f' ], 'Overwrite existing files')
+        .arg([ '--help', '-h' ], 'Display this help')
         .arg('source', 'The source of the move')
         .arg('destination', 'The destination of the move')
         .toString())

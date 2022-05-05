@@ -4,11 +4,11 @@ const touch = (env, args) => {
   while (args.length > 0) {
     switch (args[0]) {
       default: if (env.fs.fileExists(args[0])) {
-          env.eprint('File already exists : ' + args[0])
-          return 1
-        }
-      filesToCreate.push(args.shift())
-      break
+        env.eprint('File already exists : ' + args[0])
+        return 1
+      }
+        filesToCreate.push(args.shift())
+        break
     }
   }
   if (filesToCreate.length === 0) {

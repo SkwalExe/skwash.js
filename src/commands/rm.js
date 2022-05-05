@@ -42,7 +42,7 @@ const rm = (env, args) => {
 
     case 'help':
       env.print(new env.Help('rm', 'Remove files from the file system')
-        .arg(['-r', '--recursive'], 'Remove directories, too')
+        .arg([ '-r', '--recursive' ], 'Remove directories, too')
         .arg('files', 'Files to remove')
         .info('To delete files starting with - use rm ./-file')
         .toString())
