@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "build": "browserify --s ShellEmulator src/index.js | uglifyjs -c > dist/skwash.min.js"
+    "build": "npm run lint && browserify --s ShellEmulator src/index.js | uglifyjs -c > dist/skwash.min.js",
+    "lint": "eslint src/**.js src/**/*.js --fix"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "browserify": "^17.0.0",
+    "eslint": "^8.14.0",
     "uglify-js": "^3.15.4"
   }
 }
