@@ -23,8 +23,8 @@ const mkdir = (env, args) => {
     case 'help':
       env.print(new env.Help('mkdir', 'Create a directory')
         .arg('dir', 'Create the specified directory')
-        .arg(['--parents', '-p'], 'Create parent directories as needed, ignore if the directory already exists')
-        .arg(['--help', '-h'], 'Display this help')
+        .arg([ '--parents', '-p' ], 'Create parent directories as needed, ignore if the directory already exists')
+        .arg([ '--help', '-h' ], 'Display this help')
         .toString())
       break
     case 'mkdir':
@@ -65,7 +65,7 @@ const mkdir = (env, args) => {
         }
 
         createdDirs.push(createdDir.result)
-      };
+      }
       break
   }
 }

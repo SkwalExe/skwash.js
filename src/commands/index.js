@@ -11,7 +11,7 @@ const commands = {
   help: require('./help'),
   cp: require('./cp'),
   mv: require('./mv'),
-  alias: require('./alias'),
+  alias: require('./alias')
 }
 
 module.exports = commands

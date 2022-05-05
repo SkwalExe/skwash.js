@@ -44,15 +44,15 @@ class Help {
   toString = () => {
     let result = this.name
     if (this.argsAfterName)
-      result += this.args.length > 0 ? ' ' + this.args.reduce((acc, arg) => acc += arg.flags.join(', ') + " ", "") : ''
+      result += this.args.length > 0 ? ' ' + this.args.reduce((acc, arg) => acc += arg.flags.join(', ') + ' ', '') : ''
 
-    result += "\n-----------------\n"
+    result += '\n-----------------\n'
     result += this.description
-    result += "\nAuthor : "
+    result += '\nAuthor : '
     result += this.author
-    result += "\n-----------------\n"
-    result += "Options :\n"
-    result += this.args.reduce((acc, arg) => acc += "  " + arg.flags.join(', ') + (this.alignArgs_ ? (" ".repeat(this.longestArgLength - arg.flags.join(', ').length)) : '') + " : " + arg.description + "\n", "")
+    result += '\n-----------------\n'
+    result += 'Options :\n'
+    result += this.args.reduce((acc, arg) => acc += '  ' + arg.flags.join(', ') + (this.alignArgs_ ? (' '.repeat(this.longestArgLength - arg.flags.join(', ').length)) : '') + ' : ' + arg.description + '\n', '')
     result += this.additionalInfo.length > 0 ? '\n-----------------\n' : ''
     result += this.additionalInfo.join('\n');
 

@@ -32,45 +32,45 @@ const ls = (env, args) => {
 
   switch (command) {
     case 'ls':
-      {
-        if (dirsToList.length === 0) { dirsToList.push('.') }
+    {
+      if (dirsToList.length === 0) { dirsToList.push('.') }
 
-        let textResult = ''
-        const recursive = options.includes('r')
+      let textResult = ''
+      const recursive = options.includes('r')
 
-        if (recursive) {
-          const lookInside = (dir) => {
-            const result = []
-            const files = env.fs.getDirContent(dir).result
-            files.forEach(file => {
-              const fullPath = env.fs.getFullPath(file)
-              if (env.fs.isDir(fullPath)) {
-                result.push(fullPath)
-                lookInside(fullPath).forEach(subDir => result.push(subDir))
-              }
-            })
-            return result
-          }
-          dirsToList.forEach(dir => lookInside(dir).forEach(subDir => dirsToList.push(subDir)))
+      if (recursive) {
+        const lookInside = (dir) => {
+          const result = []
+          const files = env.fs.getDirContent(dir).result
+          files.forEach(file => {
+            const fullPath = env.fs.getFullPath(file)
+            if (env.fs.isDir(fullPath)) {
+              result.push(fullPath)
+              lookInside(fullPath).forEach(subDir => result.push(subDir))
+            }
+          })
+          return result
         }
-
-        dirsToList.forEach(dirToList => {
-          if (recursive || dirsToList.length > 1) { textResult += '\n' + env.fs.simplifyPath(dirToList) + ' : \n' }
-          let content = env.fs.getDirContent(dirToList).result
-          if (!options.includes('a')) { content = content.filter(file => !file.name.startsWith('.')) }
-          textResult += content.reduce((acc, file) => { return acc += file.name + ' ' }, '') + '\n'
-        })
-
-        env.print(textResult.trim())
-        break
+        dirsToList.forEach(dir => lookInside(dir).forEach(subDir => dirsToList.push(subDir)))
       }
+
+      dirsToList.forEach(dirToList => {
+        if (recursive || dirsToList.length > 1) { textResult += '\n' + env.fs.simplifyPath(dirToList) + ' : \n' }
+        let content = env.fs.getDirContent(dirToList).result
+        if (!options.includes('a')) { content = content.filter(file => !file.name.startsWith('.')) }
+        textResult += content.reduce((acc, file) => { return acc += file.name + ' ' }, '') + '\n'
+      })
+
+      env.print(textResult.trim())
+      break
+    }
     case 'help':
 
       env.print(new env.Help('ls', 'List files in a directory')
         .arg('[dir]', 'List files in the specified directory')
-        .arg(['--all', '-a'], 'List hidden files')
-        .arg(['-r', '--recursive'], 'Recursively list files in subdirectories')
-        .arg(['-h', '--help'], 'Prints this help')
+        .arg([ '--all', '-a' ], 'List hidden files')
+        .arg([ '-r', '--recursive' ], 'Recursively list files in subdirectories')
+        .arg([ '-h', '--help' ], 'Prints this help')
         .toString())
       break
   }
