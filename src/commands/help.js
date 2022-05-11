@@ -1,4 +1,6 @@
-const cd = (env) => {
+const help = (env) => {
+
+  // This command diplays information only about the preinstalled commands
 
   const help = new env.Help('skwalsh.js', 'linux shell emulator for javascript')
     .arg('help', 'Display this help')
@@ -20,4 +22,4 @@ const cd = (env) => {
   env.print(help.toString())
 }
 
-module.exports = cd
+module.exports = help
