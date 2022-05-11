@@ -1,3 +1,5 @@
+// This file is used to reference the preinstalled commands
+
 const commands = {
   touch: require('./touch'),
   ls: require('./ls'),

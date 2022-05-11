@@ -1,12 +1,25 @@
 const rm = (env, args) => {
+  // The files to delete
   const filesToDelete = []
+
+  // If the files to delete contains a dire
   let containsDir = false
+
+  // The options passed to the command
   const options = []
+
+  // The action to execute (help, or rm)
   let command = 'rm'
 
+
+  /*
+   * --- parse args ---
+   * while there are args
+   */
   while (args.length > 0) {
     switch (args[0]) {
       case '-r' || '-R' || '--recursive':
+        // Add r to the options
         options.push('r')
         args.shift()
         break
@@ -16,8 +29,13 @@ const rm = (env, args) => {
         args.shift()
         break
 
+        // If the option is not -h or -r it may be the path of a file to delete
       default:
-        if (env.fs.isDir(args[0])) { containsDir = true }
+        // If the arg is a directory
+        if (env.fs.isDir(args[0])) {
+          containsDir = true
+        }
+        // Add the file to the files to delete
         filesToDelete.push(args.shift())
         break
     }
@@ -36,6 +54,7 @@ const rm = (env, args) => {
         return 1
       }
 
+      // Delete all the files to delete
       filesToDelete.forEach(file => env.fs.delete(file))
 
       break
