@@ -14,7 +14,9 @@ const commands = {
   cp: require('./cp'),
   mv: require('./mv'),
   alias: require('./alias'),
-  file: require('./file')
+  file: require('./file'),
+  true: require('./true'),
+  false: require('./false')
 }
 
 module.exports = commands

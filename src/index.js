@@ -62,7 +62,7 @@ class ShellEmulator {
     this.executeCommand = (command) => {
 
       this.variables['cd'] = this.fs.CWD();
-      this.variables['?'] = this.lastExitCode;
+      this.variables['?'] = this.lastExitCode.toString()
 
       command = command.trim()
 
@@ -80,15 +80,15 @@ class ShellEmulator {
        * /[^\\]\$[a-zA-Z0-9_]{1,}|\?/g
        */
 
-      const variableRegex = /\$[a-zA-Z0-9_]{1,}|\?/g
+      const variableRegex = /\$([a-zA-Z0-9_]{1,}|\?)/g
 
       const variables = command.match(variableRegex)
 
       if (variables) {
-        variables.forEach(variable => {
-          variable = variable.substring(1)
+        for (let i = 0; i < variables.length; i++) {
+          const variable = variables[i].substring(1)
           command = command.replace(`$${variable}`, this.variables[variable] || '')
-        })
+        }
       }
 
       let parsed = this.parser.parseCommand(command)
