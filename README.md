@@ -5,7 +5,7 @@
 # JsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@main/dist/skwash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.2.0/dist/skwash.min.js"></script>
 ```
 
 # Example
@@ -38,6 +38,7 @@ Skwash.js provides the following features:
 - [✨ History](#history)
 - [✨ Scripts](#scripts)
 - [✨ Events](#events)
+- [✨ Redirections](#redirections)
 
 Once you created a shell instance, you can use these functions to interact with it:
 
@@ -111,6 +112,14 @@ Current events are:
 - `stdout`: when a command writes to the standard output
 - `stderr`: when a command writes to the standard error output
 - `output`: when a command writes to the standard output or the standard error output
+
+## Redirections
+
+The user can use redirectors to redirect the output of a command to a file.
+
+The supported redirectors are:
+- `>>`: append to the file
+- `>`: overwrite the file
 
 # Functions 🛠️
 
@@ -334,22 +343,37 @@ npm install --save-dev
 
 5. Then make your changes
 
-6. Update the changelog and version number if needed
+6. Update the changelog and version number if needed (using [Semantic Versioning](https://semver.org)) 
+  ```bash
+  # bug fix
+  npm version patch --no-git-tag-version
 
-7. Update the minified/browser version of the library
+  # add a new feature 
+  npm version minor --no-git-tag-version
+  
+  # changes that break backwards compatibility
+  npm version major --no-git-tag-version
+  ```
+
+7. List and correct linting errors
+  ```bash
+  npm run lint
+  ```
+
+8. Update the minified/browser version of the library
   ```bash
   npm run build
   ```
 
 
-8. Once you're done, commit your changes and push them to the remote repository.
+9. Once you're done, commit your changes and push them to the remote repository.
   ```git
   git add --all
   git commit -m "Add super-cool-feature"
   git push origin super-cool-feature
   ```
 
-9. Then, open a pull request on GitHub from your fork.
+10. Then, open a pull request on GitHub from your fork.
     1. Go to [this link](https://github.com/SkwalExe/skwash.js/compare/)
     2. Click compare across forks
     3. On the right, on `head repository` select your fork
