@@ -99,7 +99,24 @@ class ShellEmulator {
 
       let args = parsed.args;
 
+      let writeTo = parsed['>'];
+      let appendTo = parsed['>>'];
+
       const commandName = parsed.name
+      let oldPrint = this.print
+      let oldEprint = this.eprint
+      if (writeTo.length > 0 || appendTo.length > 0) {
+
+        this.print = this.eprint = (text) => {
+          for (let i = 0; i < writeTo.length; i++) {
+            this.fs.writeFile(writeTo[i], text)
+          }
+
+          for (let i = 0; i < appendTo.length; i++) {
+            this.fs.writeFile(appendTo[i], text, true)
+          }
+        }
+      }
 
       if (!this.commands[commandName]) {
         if (this.fs.isRegularFile(commandName)) {
@@ -117,6 +134,11 @@ class ShellEmulator {
 
       const commandResult = this.commands[commandName](this, args)
       this.lastExitCode = typeof commandResult === 'number' ? commandResult : 0
+
+      if (writeTo.length > 0 || appendTo.length > 0) {
+        this.print = oldPrint
+        this.eprint = oldEprint
+      }
       return this.lastExitCode
     }
 
