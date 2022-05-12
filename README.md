@@ -5,7 +5,7 @@
 # JsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.5.0/dist/skwash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.6.0/dist/skwash.min.js"></script>
 ```
 
 # Example
@@ -66,6 +66,7 @@ By default, the shell is provided with the following build-in commands:
 - [✨ `file`](#file)
 - [✨ `true`](#true)
 - [✨ `false`](#false)
+- [✨ `basename`](#basename)
 
 # Features 🎉
 
@@ -346,6 +347,17 @@ This command is used to return a failure code.
 ```bash
 false; echo $?
 > 1
+```
+
+## `basename`
+
+This command is used to return the name of the file or the last part of the path.
+
+```bash
+basename file.txt
+> file.txt
+basename /home/user/file.txt
+> file.txt
 ```
 
 # final

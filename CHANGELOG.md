@@ -1,3 +1,6 @@
+# 0.6.0
+- add `basename` built-in command
+
 # 0.5.0
 - fix variable parsing 
 - add true and false built-in commands
