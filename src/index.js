@@ -4,9 +4,11 @@
  * License : MIT
  */
 const FFS = require('fakefilesystem')
+const CmdLineParser = require('cmdline-parser')
 
 class ShellEmulator {
   constructor(defaultCommands = true) {
+    this.parser = new CmdLineParser(false, true, false, false, true, false, false)
     this.Help = require('./classes/Help')
     this.history = []
     this.commands = defaultCommands ? require('./commands') : {}
@@ -58,6 +60,10 @@ class ShellEmulator {
     }
 
     this.executeCommand = (command) => {
+
+      this.variables['cd'] = this.fs.CWD();
+      this.variables['?'] = this.lastExitCode;
+
       command = command.trim()
 
       const variableMatch = command.match(/^([a-zA-Z0-9_]+)=(.*)$/)
@@ -69,26 +75,31 @@ class ShellEmulator {
         return 0
       }
 
+      /*
+       * Regex for allowed var names
+       * /[^\\]\$[a-zA-Z0-9_]{1,}|\?/g
+       */
 
-      let args = command.split(' ').filter(args => args !== '')
-      args.forEach((arg, index) => {
-        switch (arg) {
-          case '$?':
-            args[index] = this.lastExitCode.toString()
-            break
+      const variableRegex = /\$[a-zA-Z0-9_]{1,}|\?/g
 
-          case '$cd':
-            args[index] = this.fs.CWD();
-            break
+      const variables = command.match(variableRegex)
 
-          default:
-            if (/^\$[a-zA-Z0-9_]+$/.test(arg))
-              args[index] = this.variables[arg.slice(1)] || ''
-            break;
-        }
+      if (variables) {
+        variables.forEach(variable => {
+          variable = variable.substring(1)
+          command = command.replace(`$${variable}`, this.variables[variable] || '')
+        })
+      }
 
-      })
-      const commandName = args.shift()
+      let parsed = this.parser.parseCommand(command)
+      if (parsed.invalid) {
+        this.eprint('[ Skwash ] : ' + parsed.invalidReason)
+        return 130
+      }
+
+      let args = parsed.args;
+
+      const commandName = parsed.name
 
       if (!this.commands[commandName]) {
         if (this.fs.isRegularFile(commandName)) {
@@ -98,7 +109,7 @@ class ShellEmulator {
             return this.run(command)
           }
         } else {
-          this.eprint(`Command not found: ${commandName}`)
+          this.eprint(`[ Skwash ] : Command not found: ${commandName}`)
           this.lastExitCode = 127
           return 127
         }
