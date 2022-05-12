@@ -8,7 +8,7 @@ const CmdLineParser = require('cmdline-parser')
 
 class ShellEmulator {
   constructor(defaultCommands = true) {
-    this.parser = new CmdLineParser(false, true, false, false, true, false, false)
+    this.parser = new CmdLineParser(true, true, true, false, true, false, false)
     this.Help = require('./classes/Help')
     this.history = []
     this.commands = defaultCommands ? require('./commands') : {}
@@ -99,8 +99,11 @@ class ShellEmulator {
 
       let args = parsed.args;
 
-      let writeTo = parsed['>'];
-      let appendTo = parsed['>>'];
+      let writeTo = parsed['>']
+      let appendTo = parsed['>>']
+
+      let ifFail = parsed['||']
+      let ifSuccess = parsed['&&']
 
       const commandName = parsed.name
       let oldPrint = this.print
@@ -139,6 +142,13 @@ class ShellEmulator {
         this.print = oldPrint
         this.eprint = oldEprint
       }
+
+      if (ifFail !== null && this.lastExitCode !== 0)
+        this.run(ifFail.text)
+
+      if (ifSuccess !== null && this.lastExitCode === 0)
+        this.run(ifSuccess.text)
+
       return this.lastExitCode
     }
 

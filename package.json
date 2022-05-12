@@ -1,6 +1,6 @@
 {
   "name": "skwash",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Javascript-driven Linux-like shell emulator",
   "main": "src/index.js",
   "scripts": {
@@ -21,13 +21,13 @@
     "bash"
   ],
   "author": "Léopold KoprivnikIbgh, @SkwalExe <skwal.net@gmail.com>",
-  "license": " MIT",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SkwalExe/skwash.js/issues"
   },
   "homepage": "https://github.com/SkwalExe/skwash.js#readme",
   "dependencies": {
-    "cmdline-parser": "^0.1.1",
+    "cmdline-parser": "^0.2.1",
     "fakefilesystem": "^0.4.2"
   },
   "devDependencies": {
