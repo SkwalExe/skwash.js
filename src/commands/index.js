@@ -13,7 +13,8 @@ const commands = {
   help: require('./help'),
   cp: require('./cp'),
   mv: require('./mv'),
-  alias: require('./alias')
+  alias: require('./alias'),
+  file: require('./file')
 }
 
 module.exports = commands

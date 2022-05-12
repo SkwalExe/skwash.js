@@ -5,7 +5,7 @@
 # JsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.2.1/dist/skwash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.3.0/dist/skwash.min.js"></script>
 ```
 
 # Example
@@ -63,6 +63,7 @@ By default, the shell is provided with the following build-in commands:
 - [✨ `cp`](#cp)
 - [✨ `mv`](#mv)
 - [✨ `alias`](#alias)
+- [✨ `file`](#file)
 
 # Features 🎉
 
@@ -316,6 +317,15 @@ This command is used to create an alias for a command.
 alias list ls
 list
 > file.txt
+```
+
+## `file`
+
+This command is used to determine the type of a file : file, or directory.
+
+```bash
+file file.txt
+> file.txt: regular file
 ```
 
 # final
