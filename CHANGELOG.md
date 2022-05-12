@@ -1,3 +1,7 @@
+# 0.5.0
+- fix variable parsing 
+- add true and false built-in commands
+
 # 0.4.0
 - add support for `||` and `&&`
 
