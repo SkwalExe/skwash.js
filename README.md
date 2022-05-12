@@ -64,6 +64,8 @@ By default, the shell is provided with the following build-in commands:
 - [✨ `mv`](#mv)
 - [✨ `alias`](#alias)
 - [✨ `file`](#file)
+- [✨ `true`](#true)
+- [✨ `false`](#false)
 
 # Features 🎉
 
@@ -326,6 +328,24 @@ This command is used to determine the type of a file : file, or directory.
 ```bash
 file file.txt
 > file.txt: regular file
+```
+
+## `true`
+
+This command is used to return a success code.
+
+```bash
+true; echo $?
+> 0
+```
+
+## `false`
+
+This command is used to return a failure code.
+
+```bash
+false; echo $?
+> 1
 ```
 
 # final
