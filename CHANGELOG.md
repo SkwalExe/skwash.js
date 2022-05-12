@@ -1,3 +1,6 @@
+# 0.4.0
+- add support for `||` and `&&`
+
 # 0.3.0
 - add `file` build-in command
 
