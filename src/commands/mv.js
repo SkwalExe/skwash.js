@@ -54,6 +54,7 @@ const mv = (env, args) => {
 
       break
     case 'mv':
+    {
 
       if (source === null) {
         env.eprint('Missing required argument : source')
@@ -65,30 +66,15 @@ const mv = (env, args) => {
         return 1
       }
 
-      // If the source file doens't exist
-      if (!env.fs.fileExists(source)) {
-        env.eprint('Source file does not exist : ' + source)
-        return 1
-      }
+      let operation = env.fs.move(source, destination)
 
-      // If the destination file already exists
-      if (env.fs.fileExists(destination)) {
-        // If the f option is not set (force)
-        if (!options.includes('f')) {
-          env.eprint('Destination file already exists : ' + destination)
-          return 1
-        } else {
-          // If the f option is set then delete the destination file
-          env.fs.delete(destination)
-        }
-      }
+      if (operation.success)
+        return 0;
 
-      // Try to copy the source file to the destination and if success then delete the source file
-      if (env.fs.copy(source, destination).success) {
-        env.fs.delete(source)
-      }
+      env.eprint(operation.error + ' : ' + operation.errorCause)
 
-      break
+      return 1
+    }
   }
 }
 
