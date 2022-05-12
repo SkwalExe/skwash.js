@@ -16,7 +16,8 @@ const commands = {
   alias: require('./alias'),
   file: require('./file'),
   true: require('./true'),
-  false: require('./false')
+  false: require('./false'),
+  basename: require('./basename')
 }
 
 module.exports = commands
