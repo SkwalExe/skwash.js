@@ -2,7 +2,7 @@ const help = (env) => {
 
   // This command diplays information only about the preinstalled commands
 
-  const help = new env.Help('skwalsh.js', 'linux shell emulator for javascript')
+  const help = new env.Help('skwash.js', 'linux shell emulator for javascript')
     .arg('help', 'Display this help')
     .arg('touch', 'Create a new empty file')
     .arg('ls', 'List files in the current directory or the specified one')
