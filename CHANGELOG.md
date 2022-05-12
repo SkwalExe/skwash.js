@@ -1,3 +1,6 @@
+# 0.3.0
+- add `file` build-in command
+
 # 0.2.1
 - mv command, supports more functionnalities
 

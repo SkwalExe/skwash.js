@@ -16,6 +16,7 @@ const help = (env) => {
     .arg('cp', 'Copy a file')
     .arg('mv', 'Move a file')
     .arg('alias', 'Create an alias for a command')
+    .arg('file', 'Display information about a file')
     .arg('[command]', 'Run the specified command')
     .showArgsAfterName(false)
 
