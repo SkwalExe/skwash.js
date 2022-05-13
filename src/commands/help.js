@@ -20,6 +20,8 @@ const help = (env) => {
     .arg('true', 'Do nothing, successfully')
     .arg('false', 'Do nothing, unsuccessfully')
     .arg('basename', 'Get the basename of a file')
+    .arg('realpath', 'Get the absolute path of a file')
+    .arg('uname', 'Display information about the current system')
     .arg('[command]', 'Run the specified command')
     .showArgsAfterName(false)
 
