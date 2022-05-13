@@ -1,3 +1,8 @@
+# 0.7.0
+- add `realpath` built-in command
+- add `uname` built-in command
+- add `$RANDOM` variable
+
 # 0.6.0
 - add `basename` built-in command
 

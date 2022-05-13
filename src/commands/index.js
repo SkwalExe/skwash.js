@@ -17,7 +17,9 @@ const commands = {
   file: require('./file'),
   true: require('./true'),
   false: require('./false'),
-  basename: require('./basename')
+  basename: require('./basename'),
+  realpath: require('./realpath'),
+  uname: require('./uname')
 }
 
 module.exports = commands

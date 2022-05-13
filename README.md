@@ -5,7 +5,7 @@
 # JsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.6.0/dist/skwash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.7.0/dist/skwash.min.js"></script>
 ```
 
 # Example

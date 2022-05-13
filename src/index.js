@@ -63,6 +63,7 @@ class ShellEmulator {
 
       this.variables['cd'] = this.fs.CWD();
       this.variables['?'] = this.lastExitCode.toString()
+      this.variables['RANDOM'] = Math.floor(Math.random() * 32767).toString()
 
       command = command.trim()
 
