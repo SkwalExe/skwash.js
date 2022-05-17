@@ -2,31 +2,39 @@
 
 🐧 Linux-like shell 🐚 emulated directly in javascript 😍
 
+![](assets/banner.png)
+
+# Example
+
+[A simple example of the usage of the library](https://skwalexe.github.io/skwash.js/example.html) is provided in this repository.
+
 # JsDelivr
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.7.0/dist/skwash.min.js"></script>
 ```
 
-# Example
+# NPM module
 
-[A simple example of the usage of the library](https://skwalexe.github.io/skwash.js/example.html) is provided in this repository.
-
-# Usage 📝
-
-The module can be used in Node.js or [in the browser](#jsdelivr).
+Install the npm module 
 
 ```bash
-npm install --save skwash
+npm install skwash
 ```
+
+And import it in your project 
 
 ```js
-// --- node.js only ---
 const ShellEmulator = require('skwash');
-// --------------------
 
-var myShell = new ShellEmulator();
+let myShell = new ShellEmulator();
 ```
+
+# Setting up 
+
+You can import the library into you website with [JsDelivr](#JsDelivr) or, you can use the [npm module](#NPM-module) and import it in your project.
+
+# Your first shell ✨
 
 Skwash.js provides the following features:
 
