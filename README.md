@@ -11,7 +11,7 @@
 # JsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.7.0/dist/skwash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.8.0/dist/skwash.min.js"></script>
 ```
 
 # NPM module
@@ -47,6 +47,7 @@ Skwash.js provides the following features:
 - [✨ Scripts](#scripts)
 - [✨ Events](#events)
 - [✨ Redirections](#redirections)
+- [✨ Snapshots](#snapshots)
 
 Once you created a shell instance, you can use these functions to interact with it:
 
@@ -54,6 +55,8 @@ Once you created a shell instance, you can use these functions to interact with 
 - [✨ `ShellEmulator.registerCommand()`](#shellemulatorregistercommand)
 - [✨ `ShellEmulator.removeCommand()`](#shellemulatorremovecommand)
 - [✨ `ShellEmulator.on()`](#shellemulatoron)
+- [✨ `ShellEmulator.toJson()`](#shellemulatortojson)
+- [✨ `ShellEmulator.loadFromJson()`](#shellemulatorloadfromjson)
 - [✨ `ShellEmulator.fs.*`](#shellemulatorfs)
 
 By default, the shell is provided with the following build-in commands:
@@ -133,6 +136,10 @@ The supported redirectors are:
 - `>>`: append to the file
 - `>`: overwrite the file
 
+## Snapshots
+
+You can save the current state of the shell in a snapshot with the [`ShellEmulator.toJson()`](#toJson) and [`ShellEmulator.loadFromJson()`](#loadFromJson) functions.
+
 # Functions 🛠️
 
 ## `ShellEmulator.run()`
@@ -188,6 +195,26 @@ myShell.on('stdout', text => {
 ```
 
 Your function musts take one argument which is the text emitted by the shell.
+
+## `ShellEmulator.toJson()`
+
+This function is used to save the current state of the shell in a JSON string.
+
+```js
+var json = myShell.toJson();
+```
+
+You can use the [`ShellEmulator.loadFromJson()`](#loadFromJson) function to load the state of the shell from a JSON string.
+
+## `ShellEmulator.loadFromJson()`
+
+This function is used to load a snapshot of the shell from a JSON string.
+
+```js
+myShell.loadFromJson(json);
+```
+
+To generate a snapshot, use the [`ShellEmulator.toJson()`](#toJson) function.
 
 ## `ShellEmulator.fs.*`
 
@@ -393,7 +420,7 @@ npm install --save-dev
 
 5. Then make your changes
 
-6. Update the changelog and version number if needed (using [Semantic Versioning](https://semver.org)) 
+6. Update the changelog and version number if needed (using [Semantic Versioning](https://semver.org)) also, update the version number in the JsDelivr links (js and css)
   ```bash
   # bug fix
   npm version patch --no-git-tag-version

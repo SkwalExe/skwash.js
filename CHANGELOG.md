@@ -1,3 +1,8 @@
+# 0.8.0
+- use latest version of fakefilesystem
+- use fs.copy function in the cp command for more features
+- add toJson and loadFromJson function to generate and load snapshots
+
 # 0.7.0
 - add `realpath` built-in command
 - add `uname` built-in command

@@ -170,6 +170,23 @@ class ShellEmulator {
       command = command.split(/[\s;\n]/).filter(cmd => cmd.trim().length > 0).join(' ')
       return this.executeCommand(command)
     }
+
+    this.toJson = () => {
+      return JSON.stringify({
+        commands: this.commands,
+        history: this.history,
+        variables: this.variables,
+        fs: this.fs.tree
+      })
+    }
+
+    this.loadFromJson = (json) => {
+      const data = JSON.parse(json)
+      this.commands = data.commands
+      this.history = data.history
+      this.variables = data.variables
+      this.fs.tree = data.fs
+    }
   }
 }
 
