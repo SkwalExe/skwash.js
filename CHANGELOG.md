@@ -1,3 +1,6 @@
+# 0.8.1
+- Remove commands from snapshots, because JSON doesn't support functions
+
 # 0.8.0
 - use latest version of fakefilesystem
 - use fs.copy function in the cp command for more features

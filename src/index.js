@@ -173,7 +173,6 @@ class ShellEmulator {
 
     this.toJson = () => {
       return JSON.stringify({
-        commands: this.commands,
         history: this.history,
         variables: this.variables,
         fs: this.fs.tree
@@ -182,7 +181,6 @@ class ShellEmulator {
 
     this.loadFromJson = (json) => {
       const data = JSON.parse(json)
-      this.commands = data.commands
       this.history = data.history
       this.variables = data.variables
       this.fs.tree = data.fs

@@ -1,11 +1,11 @@
 {
   "name": "skwash",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Javascript-driven Linux-like shell emulator",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "build": "npm run lint && browserify --s ShellEmulator src/index.js | uglifyjs -c > dist/skwash.min.js",
+    "build": "browserify --s ShellEmulator src/index.js | uglifyjs -c > dist/skwash.min.js",
     "lint": "eslint src/**.js src/**/*.js --fix"
   },
   "repository": {
