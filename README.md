@@ -11,7 +11,7 @@
 # JsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.8.0/dist/skwash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.8.1/dist/skwash.min.js"></script>
 ```
 
 # NPM module
@@ -138,7 +138,12 @@ The supported redirectors are:
 
 ## Snapshots
 
-You can save the current state of the shell in a snapshot with the [`ShellEmulator.toJson()`](#toJson) and [`ShellEmulator.loadFromJson()`](#loadFromJson) functions.
+You can save the current state of the shell in a snapshot with the [`ShellEmulator.toJson()`](#shellemulatortojson) and [`ShellEmulator.loadFromJson()`](#shellemulatorloadfromjson) functions.
+
+Snapshots cannot save commands, snapshots can only save :
+- the current file system
+- the command history
+- the variables
 
 # Functions 🛠️
 
@@ -286,16 +291,7 @@ cat file.txt
 ## `echo`
 
 This command is used to display text.
-
-```bash
-echo Hello world !
-> Hello world !
-```
-
-## `history`
-
-This command is used to display the history of the commands that have been executed by the user.
-
+npm run lint && 
 ```bash
 history
 > ls
