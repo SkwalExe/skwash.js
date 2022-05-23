@@ -11,7 +11,7 @@
 # JsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.8.1/dist/skwash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/SkwalExe/skwash.js@v0.8.2/dist/skwash.min.js"></script>
 ```
 
 # NPM module

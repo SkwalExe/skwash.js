@@ -1,3 +1,6 @@
+# 0.8.2
+- Use latest cmdline-parser version
+
 # 0.8.1
 - Remove commands from snapshots, because JSON doesn't support functions
 
