@@ -81,16 +81,14 @@ class ShellEmulator {
        * /[^\\]\$[a-zA-Z0-9_]{1,}|\?/g
        */
 
-      const variableRegex = /\$([a-zA-Z0-9_]{1,}|\?)/g
+      const variableRegex = /(?<!\\)\$([a-zA-Z0-9_]{1,}|\?)/g
 
-      const variables = command.match(variableRegex)
+      command = command.replace(variableRegex, (match) => {
+        const variable = match.substring(1)
+        return this.variables[variable] || ''
+      })
 
-      if (variables) {
-        for (let i = 0; i < variables.length; i++) {
-          const variable = variables[i].substring(1)
-          command = command.replace(`$${variable}`, this.variables[variable] || '')
-        }
-      }
+      command = command.replace(/\\\$([a-zA-Z0-9_]{1,}|\?)/g, '$$$1')
 
       let parsed = this.parser.parseCommand(command)
       if (parsed.invalid) {

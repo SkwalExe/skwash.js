@@ -1,3 +1,6 @@
+# 0.8.3
+- Dont substitute variables preceded by `\` (ex: `\$RANDOM`)
+
 # 0.8.2
 - Use latest cmdline-parser version
 
